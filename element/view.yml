@@ -1,0 +1,53 @@
+-
+  type: h6
+  attribute:
+    id: date
+  innerHTML: _date
+-
+  type: h4
+  attribute:
+    id: headline
+  innerHTML: _headline
+-
+  type: p
+  innerHTML:
+    -
+      type: i
+      attribute:
+        id: description
+      innerHTML: _description
+-
+  type: p
+  attribute:
+    id: description_more
+  innerHTML: _description_more
+-
+  type: p
+  settings:
+    role:
+      item:
+        - webadmin
+  attribute:
+    id: edit
+  innerHTML:
+    -
+      type: a
+      attribute:
+        id: btn_edit
+        data-id: _
+        class: btn btn-warning btn-xs
+        onclick: "PluginWfBootstrapjs.modal({id: 'modal_sitenews_form', url: '/sitenews/form/id/'+this.getAttribute('data-id'), lable: PluginI18nJson_v1.i18n('News'), footer_btn_close: true, footer_btn_close_text: PluginI18nJson_v1.i18n('Close')});"
+      innerHTML: Edit
+    -
+      type: a
+      attribute:
+        id: btn_delete
+        data-id: _
+        class: btn btn-warning btn-xs
+        onclick: |
+          if(confirm('Are you sure?')){
+            $.get( '/sitenews/delete/id/'+this.getAttribute('data-id'), function( data ) {
+              location.reload();
+            });
+          }
+      innerHTML: Delete

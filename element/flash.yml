@@ -1,0 +1,30 @@
+-
+  type: div
+  attribute:
+    class: list-group
+  innerHTML:
+    -
+      type: div
+      attribute:
+        class: list-group-item active
+      innerHTML:
+        -
+          type: a
+          settings:
+            role:
+              item:
+                - webadmin
+          attribute:
+            class: btn btn-warning btn-xs
+            style: 'float:right'
+            onclick: "PluginWfBootstrapjs.modal({id: 'modal_sitenews_form', url: '/sitenews/form', lable: PluginI18nJson_v1.i18n('News'), footer_btn_close: true, footer_btn_close_text: PluginI18nJson_v1.i18n('Close')});"
+          innerHTML: Add
+        -
+          type: span
+          innerHTML: News
+    -
+      type: div
+      attribute:
+        id: item
+      innerHTML: _
+          

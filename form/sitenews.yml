@@ -1,0 +1,38 @@
+url: '/sitenews/capture'
+ajax: true
+submit_value: Save
+id: frm_helptext
+items:
+  id:
+    type: hidden
+    label: id
+  date:
+    type: date
+    label: Date
+    mandatory: true
+  headline:
+    type: varchar
+    label: Headline
+    mandatory: true
+  description:
+    type: text
+    label: Description
+    mandatory: true
+  description_more:
+    type: text
+    label: Description more
+    mandatory: true
+render:
+  plugin: news/sitenews
+  method: form_render
+capture:
+  plugin: news/sitenews
+  method: form_capture
+buttons:
+  close:
+    type: a
+    attribute:
+      class: btn btn-default
+      data-dismiss: modal
+    innerHTML: Close
+    

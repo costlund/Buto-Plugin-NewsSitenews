@@ -1,0 +1,82 @@
+select:
+  sql: |
+    select 
+    id,
+    date,
+    headline,
+    description
+    from sitenews
+    order by date desc
+    ;
+  select:
+    - id
+    - date
+    - headline
+    - description
+select_one:
+  sql: |
+    select 
+    id,
+    date,
+    headline,
+    description,
+    description_more
+    from sitenews
+    where id=?
+    ;
+  params:
+    id:
+      type: s
+      value: _
+  select:
+    - id
+    - date
+    - headline
+    - description
+    - description_more
+update:
+  sql: |
+    update sitenews set 
+    date=?,
+    headline=?,
+    description=?,
+    description_more=?,
+    updated_at=now(),
+    updated_by='[user_id]'
+    where id=?;
+  params:
+    date:
+      type: s
+      value: _
+    headline:
+      type: s
+      value: _
+    description:
+      type: s
+      value: _
+    description_more:
+      type: s
+      value: _
+    id:
+      type: s
+      value: _
+insert:
+  sql: "insert into sitenews (id, created_by) values (?,'[user_id]');"
+  params:
+    id:
+      type: s
+      value: _
+delete:
+  sql: |
+    delete from sitenews where id=?;
+  params:
+    id:
+      type: s
+      value: _
+  
+  
+  
+  
+  
+  
+  
