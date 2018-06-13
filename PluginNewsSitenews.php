@@ -9,6 +9,7 @@ class PluginNewsSitenews{
     if($buto){
       wfPlugin::includeonce('wf/yml');
       wfPlugin::includeonce('wf/mysql');
+      wfPlugin::includeonce('wf/array');
       $this->mysql =new PluginWfMysql();
       $this->settings = wfPlugin::getPluginSettings('news/sitenews', true);
     }

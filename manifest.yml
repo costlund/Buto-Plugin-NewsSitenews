@@ -1,0 +1,26 @@
+version: 1.0
+sys:
+  name: mercury
+  version: 2.0.2
+php:
+  version: 7.0.10
+dependencies:
+  -
+    plugin: 'wf/yml'
+    version: 1.0
+  -
+    plugin: 'wf/array'
+    version: 1.0
+  -
+    plugin: 'wf/mysql'
+    version: 1.0
+  -
+    plugin: 'wf/ajax'
+    version: 1.0
+  -
+    plugin: 'wf/bootstrapjs'
+    version: 1.0
+  -
+    plugin: 'i18n/json_v1'
+    version: 1.0
+    
