@@ -1,7 +1,7 @@
 -
   type: div
   attribute:
-    class: list-group
+    class: list-group news-sitenews
   innerHTML:
     -
       type: div
@@ -25,6 +25,9 @@
     -
       type: div
       attribute:
-        id: item
-      innerHTML: _
+        class: news-sitenews-item
+      innerHTML: rs:items
+-
+  type: style
+  innerHTML: rs:style
           

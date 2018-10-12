@@ -16,9 +16,14 @@ class PluginNewsSitenews{
   }
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Widget">
-  public function widget_flash(){
+  public function widget_flash($data){
+    $data = new PluginWfArray($data);
+    if(!$data->get('data/style')){
+      $data->set('data/style', null);
+    }
     $rs = $this->db_select();
     $element = $this->getElement('flash');
+    $element->setByTag($data->get('data'));
     $item = $this->getElement('flash_item');
     $items = array();
     foreach ($rs as $key => $value) {
@@ -29,7 +34,7 @@ class PluginNewsSitenews{
       $item->setById('btn', 'attribute/data-id', $row->get('id'));
       $items[] = $item->get('item');
     }
-    $element->setById('item', 'innerHTML', $items);
+    $element->setByTag(array('items' => $items));
     wfDocument::renderElement($element->get());
   }
 // </editor-fold>
