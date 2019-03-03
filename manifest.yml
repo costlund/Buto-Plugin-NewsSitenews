@@ -1,26 +1,33 @@
-version: 1.0
+version: '1.0'
+history:
+  '1.0':
+    date: '2019-03-02'
+    description: 'Manifest created.'
+plugin:
+  -
+    name: wf/yml
+    version: '1.1'
+  -
+    name: wf/mysql
+    version: '1.5'
+  -
+    name: wf/array
+    version: '1.0.1'
+  -
+    name: 'wf/ajax'
+    version: 1.0
+  -
+    name: 'wf/bootstrapjs'
+    version: 1.0
+  -
+    name: 'i18n/json_v1'
+    version: 1.0
 sys:
-  name: mercury
-  version: 2.0.2
+  -
+    name: mercury
+    version:
+      - '1.0'
 php:
-  version: 7.0.10
-dependencies:
-  -
-    plugin: 'wf/yml'
-    version: 1.0
-  -
-    plugin: 'wf/array'
-    version: 1.0
-  -
-    plugin: 'wf/mysql'
-    version: 1.0
-  -
-    plugin: 'wf/ajax'
-    version: 1.0
-  -
-    plugin: 'wf/bootstrapjs'
-    version: 1.0
-  -
-    plugin: 'i18n/json_v1'
-    version: 1.0
-    
+  - '7.2'
+author: null
+description: ''
