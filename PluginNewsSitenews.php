@@ -1,10 +1,7 @@
 <?php
 class PluginNewsSitenews{
-// <editor-fold defaultstate="collapsed" desc="Variables">
   public $settings;
   public $mysql;
-// </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="Construct">
   function __construct($buto) {
     if($buto){
       wfPlugin::includeonce('wf/yml');
@@ -14,8 +11,6 @@ class PluginNewsSitenews{
       $this->settings = wfPlugin::getPluginSettings('news/sitenews', true);
     }
   }
-// </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="Widget">
   public function widget_flash($data){
     $data = new PluginWfArray($data);
     if(!$data->get('data/style')){
@@ -37,8 +32,6 @@ class PluginNewsSitenews{
     $element->setByTag(array('items' => $items));
     wfDocument::renderElement($element->get());
   }
-// </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="Database">
   public function db_open(){
     $this->mysql->open($this->settings->get('data/mysql'));
   }
@@ -81,8 +74,6 @@ class PluginNewsSitenews{
     $this->mysql->execute($sql->get());
     return null;
   }
-// </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="Methods">
   public function getElement($name){
     return new PluginWfYml(__DIR__."/element/$name.yml");
   }
@@ -120,8 +111,6 @@ class PluginNewsSitenews{
       return array("$('#modal_sitenews_form').modal('hide');PluginWfAjax.update('modal_sitenews_body');");
     }
   }
-// </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="Page">
   public function page_view(){
     $rs = $this->db_select_one(wfRequest::get('id'));
     $element = $this->getElement('view');
@@ -156,5 +145,4 @@ class PluginNewsSitenews{
     $this->db_delete(wfRequest::get('id'));
     exit('.');
   }
-// </editor-fold>
 }
