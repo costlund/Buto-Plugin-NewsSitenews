@@ -1,9 +1,11 @@
 item:
   type: a
   attribute:
-    class: list-group-item
+    class: list-group-item plugin_news_sitenews_item
     onclick: "PluginWfBootstrapjs.modal({id: 'modal_sitenews', url: '/sitenews/view/id/'+this.getAttribute('data-id'), lable: PluginI18nJson_v1.i18n('News'), footer_btn_close: true, footer_btn_close_text: PluginI18nJson_v1.i18n('Close')});"
     id: btn
+    style:
+      display: _
   innerHTML:
     -
       type: h6

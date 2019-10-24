@@ -14,19 +14,25 @@ class PluginNewsSitenews{
   public function widget_flash($data){
     $data = new PluginWfArray($data);
     if(!$data->get('data/style')){
-      $data->set('data/style', null);
+      $data->set('data/style', '.news-sitenews-item {max-height:300px;overflow:auto}');
     }
     $rs = $this->db_select();
     $element = $this->getElement('flash');
+    $element->setByTag(array('count' => sizeof($rs)));
     $element->setByTag($data->get('data'));
     $item = $this->getElement('flash_item');
     $items = array();
     foreach ($rs as $key => $value) {
+      $display='';
+      if($key>0){
+        $display = 'none';
+      }
       $row = new PluginWfArray($value);
       $item->setById('date', 'innerHTML', $row->get('date'));
       $item->setById('headline', 'innerHTML', $row->get('headline'));
       $item->setById('description', 'innerHTML', $this->formatText($row->get('description')));
       $item->setById('btn', 'attribute/data-id', $row->get('id'));
+      $item->setById('btn', 'attribute/style/display', $display);
       $items[] = $item->get('item');
     }
     $element->setByTag(array('items' => $items));
