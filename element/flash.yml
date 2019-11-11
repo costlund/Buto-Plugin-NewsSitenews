@@ -20,23 +20,13 @@
               item:
                 - webadmin
           attribute:
-            class: btn btn-warning btn-xs
+            class: btn btn-warning btn-sm
             style: 'float:right'
             onclick: "PluginWfBootstrapjs.modal({id: 'modal_sitenews_form', url: '/sitenews/form', lable: PluginI18nJson_v1.i18n('News'), footer_btn_close: true, footer_btn_close_text: PluginI18nJson_v1.i18n('Close')});"
           innerHTML: Add
         -
           type: span
           innerHTML: News
-        -
-          type: a
-          settings:
-            enabled: rs:count
-          attribute:
-            class: btn btn-info btn-sm float-right
-            style:
-              font-size: smaller
-            onclick: $('.plugin_news_sitenews_item').show()
-          innerHTML: Show all
     -
       type: div
       attribute:

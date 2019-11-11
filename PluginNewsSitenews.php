@@ -18,7 +18,6 @@ class PluginNewsSitenews{
     }
     $rs = $this->db_select();
     $element = $this->getElement('flash');
-    $element->setByTag(array('count' => sizeof($rs)));
     $element->setByTag($data->get('data'));
     $item = $this->getElement('flash_item');
     $items = array();
@@ -35,7 +34,17 @@ class PluginNewsSitenews{
       $item->setById('btn', 'attribute/style/display', $display);
       $items[] = $item->get('item');
     }
+    /**
+     * Add Show all item.
+     */
+    $item = $this->getElement('flash_item_show_all');
+    $items[] = $item->get();
+    /**
+     * 
+     */
     $element->setByTag(array('items' => $items));
+    $element->setByTag(array('count' => sizeof($rs)));
+    $element->setByTag(array('count_minus_one' => sizeof($rs)-1));
     wfDocument::renderElement($element->get());
   }
   public function db_open(){

@@ -1,0 +1,12 @@
+type: a
+settings:
+  enabled: rs:count_minus_one
+attribute:
+  class: list-group-item plugin_news_sitenews_item
+  onclick: $('.plugin_news_sitenews_item').show()
+  id: btn
+  style:
+    display: _
+    text-align: center
+    font-size: smaller
+innerHTML: Show all
