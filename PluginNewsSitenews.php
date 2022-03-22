@@ -103,13 +103,14 @@ class PluginNewsSitenews{
     return $txt;
   }
   public function form_render($form){
+    $form = new PluginWfArray($form);
     $rs = $this->db_select_one(wfRequest::get('id'));
     $form->set('items/id/default', $rs->get('id'));
     $form->set('items/date/default', $rs->get('date'));
     $form->set('items/headline/default', $rs->get('headline'));
     $form->set('items/description/default', $rs->get('description'));
     $form->set('items/description_more/default', $rs->get('description_more'));
-    return $form;
+    return $form->get();
   }
   public function form_capture(){
     $id = null;
@@ -142,7 +143,7 @@ class PluginNewsSitenews{
       exit('.');
     }
     $form = $this->getForm('sitenews');
-    $widget = wfDocument::createWidget('wf/form_v2', 'render', $form->get());
+    $widget = wfDocument::createWidget('form/form_v1', 'render', $form->get());
     wfDocument::renderElement(array($widget));
   }
   public function page_capture(){
@@ -150,7 +151,7 @@ class PluginNewsSitenews{
       exit('.');
     }
     $form = $this->getForm('sitenews');
-    $widget = wfDocument::createWidget('wf/form_v2', 'capture', $form->get());
+    $widget = wfDocument::createWidget('form/form_v1', 'capture', $form->get());
     wfDocument::renderElement(array($widget));
   }
   public function page_delete(){
