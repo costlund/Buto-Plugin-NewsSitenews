@@ -1,12 +1,21 @@
-type: a
-settings:
-  enabled: rs:count_minus_one
+type: div
 attribute:
-  class: list-group-item plugin_news_sitenews_item
-  onclick: $('.plugin_news_sitenews_item').show()
-  id: btn
-  style:
-    display: _
-    text-align: center
-    font-size: smaller
-innerHTML: Show all
+  class: text-center
+innerHTML:
+  -
+    type: a
+    settings:
+      disabled: rs:show_all
+    attribute:
+      class: plugin_news_sitenews_item
+      onclick: $('.plugin_news_sitenews_item').show()
+    innerHTML: Show all
+  -
+    type: a
+    settings:
+      role:
+        item:
+          - webadmin
+    attribute:
+      onclick: "PluginWfBootstrapjs.modal({id: 'modal_sitenews_form', url: '/sitenews/form', lable: this.innerHTML});"
+    innerHTML: Add

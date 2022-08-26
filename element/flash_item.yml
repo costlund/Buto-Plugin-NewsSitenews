@@ -1,27 +1,26 @@
 item:
-  type: a
+  type: div
   attribute:
-    class: list-group-item plugin_news_sitenews_item
-    onclick: "PluginWfBootstrapjs.modal({id: 'modal_sitenews', url: '/sitenews/view/id/'+this.getAttribute('data-id'), lable: PluginI18nJson_v1.i18n('News'), footer_btn_close: true, footer_btn_close_text: PluginI18nJson_v1.i18n('Close')});"
-    id: btn
+    class: plugin_news_sitenews_item
     style:
-      display: _
+      display: rs:display
   innerHTML:
     -
-      type: h6
-      attribute:
-        class: list-group-item-heading
-        id: date
-      innerHTML: _date
-    -
       type: h5
-      attribute:
-        class: list-group-item-heading
-        id: headline
-      innerHTML: _headline
+      innerHTML: 
+        -
+          type: a
+          attribute:
+            onclick: "PluginWfBootstrapjs.modal({id: 'modal_sitenews', url: '/sitenews/view/id/'+this.getAttribute('data-id'), lable: document.getElementById('plugin_news_sitenews_headline').innerHTML, 'size': 'lg'});"
+            data-id: rs:id
+          innerHTML: rs:headline
+    -
+      type: div
+      innerHTML: 
+        -
+          type: small
+          innerHTML: rs:date
     -
       type: p
       attribute:
-        id: description
-        class: list-group-item_text
-      innerHTML: _description
+      innerHTML: rs:description

@@ -6,13 +6,13 @@ items:
   id:
     type: hidden
     label: id
-  date:
-    type: date
-    label: Date
-    mandatory: true
   headline:
     type: varchar
     label: Headline
+    mandatory: true
+  date:
+    type: date
+    label: Date
     mandatory: true
   description:
     type: text
@@ -22,6 +22,8 @@ items:
     type: text
     label: Description more
     mandatory: true
+    style:
+      min-height: 400px
 render:
   plugin: news/sitenews
   method: form_render
@@ -35,4 +37,30 @@ buttons:
       class: btn btn-default
       data-dismiss: modal
     innerHTML: Close
-    
+i18n:
+  path: '/plugin/news/sitenews/i18n'
+settings:
+  globals:
+    -
+      path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
+      value: '/plugin/news/sitenews/i18n'
+elements_before:
+  -
+    type: div
+    settings:
+      globals:
+        -
+          path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
+          value: '/plugin/news/sitenews/i18n'
+    attribute: 
+      class: alert alert-info
+    innerHTML: 
+      -
+        type: span
+        innerHTML: Description more supports basic writing and formatting syntax.
+      -
+        type: a
+        attribute:
+          href: 'https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax'
+          target: _blank
+        innerHTML: Read more

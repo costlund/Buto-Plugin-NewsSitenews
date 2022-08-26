@@ -13,38 +13,42 @@ class PluginNewsSitenews{
   }
   public function widget_flash($data){
     $data = new PluginWfArray($data);
-    if(!$data->get('data/style')){
-      $data->set('data/style', '.news-sitenews-item {max-height:300px;overflow:auto}');
+    if(!$data->get('data/headline')){
+      $data->set('data/headline', 'News');
     }
     $rs = $this->db_select();
     $element = $this->getElement('flash');
     $element->setByTag($data->get('data'));
-    $item = $this->getElement('flash_item');
     $items = array();
     foreach ($rs as $key => $value) {
       $display='';
-      if($key>0){
-        $display = 'none';
+      if(!$data->get('data/show_all')){
+        if($key>0){
+          $display = 'none';
+        }
       }
+      /**
+       * 
+       */
       $row = new PluginWfArray($value);
-      $item->setById('date', 'innerHTML', $row->get('date'));
-      $item->setById('headline', 'innerHTML', $row->get('headline'));
-      $item->setById('description', 'innerHTML', $this->formatText($row->get('description')));
-      $item->setById('btn', 'attribute/data-id', $row->get('id'));
-      $item->setById('btn', 'attribute/style/display', $display);
+      $row->set('display', $display);
+      /**
+       * 
+       */
+      $item = $this->getElement('flash_item');
+      $item->setByTag($row->get());
       $items[] = $item->get('item');
     }
     /**
      * Add Show all item.
      */
     $item = $this->getElement('flash_item_show_all');
+    $item->setByTag($data->get('data'), 'rs', true);
     $items[] = $item->get();
     /**
      * 
      */
     $element->setByTag(array('items' => $items));
-    $element->setByTag(array('count' => sizeof($rs)));
-    $element->setByTag(array('count_minus_one' => sizeof($rs)-1));
     wfDocument::renderElement($element->get());
   }
   public function db_open(){
@@ -61,7 +65,17 @@ class PluginNewsSitenews{
     $sql->set('params/id/value', $id);
     $this->db_open();
     $this->mysql->execute($sql->get());
-    return new PluginWfArray($this->mysql->getStmtAsArrayOne());
+    $rs = new PluginWfArray($this->mysql->getStmtAsArrayOne());
+    /**
+     * 
+     */
+    wfPlugin::includeonce('readme/parser');
+    $parser = new PluginReadmeParser();
+    $rs->set('description_more_rm', $parser->parse_text($rs->get('description_more')));;
+    /**
+     * 
+     */
+    return $rs;
   }
   private function db_update($id){
     $sql = $this->getSql('update');
@@ -130,12 +144,7 @@ class PluginNewsSitenews{
   public function page_view(){
     $rs = $this->db_select_one(wfRequest::get('id'));
     $element = $this->getElement('view');
-    $element->setById('btn_edit', 'attribute/data-id', $rs->get('id'));
-    $element->setById('btn_delete', 'attribute/data-id', $rs->get('id'));
-    $element->setById('date', 'innerHTML', $rs->get('date'));
-    $element->setById('headline', 'innerHTML', $rs->get('headline'));
-    $element->setById('description', 'innerHTML', $this->formatText($rs->get('description')));
-    $element->setById('description_more', 'innerHTML', $this->formatText($rs->get('description_more')));
+    $element->setByTag($rs->get());
     wfDocument::renderElement($element->get());
   }
   public function page_form(){

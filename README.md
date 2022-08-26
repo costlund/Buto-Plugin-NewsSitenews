@@ -1,19 +1,21 @@
 # Buto-Plugin-NewsSitenews
-Plugin to show news from MySql database.
+- Show list of news where to click on one to read more.
+- Admin buttons are included if user has role webadmin.
+- Using MySQL.
 
-Backend to edit news and a widget to flash them.
+
+## Schema
+```
+/plugin/news/sitenews/mysql/schema.yml
+```
 
 
-Schema: /plugin/news/sitenews/mysql/schema.yml
-
-Admin settings.
+## Settings
 ```
 plugin_modules:
   sitenews:
     plugin: 'news/sitenews'
 ```
-
-Widget enable and mysql settings.
 ```
 plugin:
   news:
@@ -23,12 +25,21 @@ plugin:
         mysql: 'yml:/../buto_data/demokrationline/mysql.yml'
 ```
 
-Widget for flash news and also edit by user who has role webadmin.
+## Widget
+List news.
 ```
 type: widget
 data:
   plugin: 'news/sitenews'
   method: flash
   data:
-    style: '.news-sitenews-item {height:300px;overflow:auto}'
+```
+
+Default headline is News (optional).
+```
+    headline: Press release
+```
+Show all news in database. Default shows one news and a button to show all (optional).
+```
+    show_all: true
 ```

@@ -6,33 +6,18 @@
         path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
         value: '/plugin/news/sitenews/i18n'
   attribute:
-    class: list-group news-sitenews
+    class: news-sitenews
   innerHTML:
     -
-      type: div
+      type: h1
       attribute:
-        class: list-group-item active
-      innerHTML:
-        -
-          type: a
-          settings:
-            role:
-              item:
-                - webadmin
-          attribute:
-            class: btn btn-warning btn-sm
-            style: 'float:right'
-            onclick: "PluginWfBootstrapjs.modal({id: 'modal_sitenews_form', url: '/sitenews/form', lable: PluginI18nJson_v1.i18n('News'), footer_btn_close: true, footer_btn_close_text: PluginI18nJson_v1.i18n('Close')});"
-          innerHTML: Add
-        -
-          type: span
-          innerHTML: News
+        id: plugin_news_sitenews_headline
+        style:
+          display: none
+      innerHTML: rs:headline
     -
       type: div
       attribute:
         class: news-sitenews-item
       innerHTML: rs:items
--
-  type: style
-  innerHTML: rs:style
           
