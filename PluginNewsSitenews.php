@@ -113,7 +113,7 @@ class PluginNewsSitenews{
     return new PluginWfYml(__DIR__.'/mysql/sql.yml', $key);
   }
   public function formatText($txt){
-    $txt = str_replace("\n", "<br>", $txt);
+    $txt = wfPhpfunc::str_replace("\n", "<br>", $txt);
     return $txt;
   }
   public function form_render($form){
