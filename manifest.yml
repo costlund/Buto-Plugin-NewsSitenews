@@ -1,5 +1,9 @@
-version: 1.5.1
+version: 1.5.2
 history:
+  1.5.2:
+    date: '2023-09-27'
+    title: Versions
+    description: 'Versions update.'
   1.5.1:
     date: '2023-09-11'
     title: Versions
@@ -90,25 +94,25 @@ history:
 plugin:
   -
     name: wf/yml
-    version: 1.8.0
+    version: 1.8.1
   -
     name: wf/mysql
-    version: 1.17.0
+    version: 1.17.1
   -
     name: wf/array
-    version: 1.5.0
+    version: 1.5.1
   -
     name: wf/ajax
-    version: 1.4.2
+    version: 1.6.2
   -
     name: wf/bootstrapjs
-    version: 1.15.0
+    version: 1.15.2
   -
     name: i18n/json_v1
     version: 1.4.0
   -
     name: form/form_v1
-    version: 1.64.0
+    version: 1.64.2
   -
     name: readme/parser
     version: 1.4.0
