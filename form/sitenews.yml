@@ -35,7 +35,7 @@ buttons:
     type: a
     attribute:
       class: btn btn-default
-      data-dismiss: modal
+      data-bs-dismiss: modal
     innerHTML: Close
 i18n:
   path: '/plugin/news/sitenews/i18n'
